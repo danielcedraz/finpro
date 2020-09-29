@@ -1,0 +1,412 @@
+<h1>Registro do Usuário</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <h4>Preencha os campos abaixo para efetuar o cadastro.</h4>
+    <hr />
+    <div class="alert alert-danger" *ngIf="UserData.error != null">
+      {{ UserData.error.message }}
+    </div>
+
+    <form method="post" (ngSubmit)="registrar()">
+      <!--Primeira Linha-->
+      <div class="row">
+        <!--User Name-->
+        <div class="col-md-6 mb-2">
+          <input class="form-control"
+                 placeholder="Nome*"
+                 [ngClass]="{
+                    'is-invalid': name.invalid && (name.dirty || name.touched),
+                    'is-valid': name.valid && (name.dirty || name.touched)
+                   }"
+                 type="text"
+                 name="Name"
+                 [(ngModel)]="UserData.username"
+                 #name="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.errors.required">
+              O campo nome é obrigatório.
+            </div>
+          </div>
+        </div>
+
+        <!--User Last Name-->
+        <div class="col-md-6 mb-2">
+          <input class="form-control"
+                 placeholder="Sobrenome*"
+                 [ngClass]="{
+                    'is-invalid': lastname.invalid && (lastname.dirty || lastname.touched),
+                    'is-valid': lastname.valid && (lastname.dirty || lastname.touched)
+                   }"
+                 type="text"
+                 name="LastName"
+                 [(ngModel)]="UserData.lastname"
+                 #lastname="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+            <div *ngIf="lastname.errors.required">
+              O campo sobrenome é obrigatório.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Segunda Linha-->
+      <div class="row">
+        <!--CPF-->
+        <div class="col-md-4 mb-2">
+          <input class="form-control"
+                 placeholder="CPF*"
+                 [ngClass]="{
+                    'is-invalid': cpf.invalid && (cpf.dirty || cpf.touched),
+                    'is-valid': cpf.valid && (cpf.dirty || cpf.touched)
+                   }"
+                 type="text"
+                 name="CPF"
+                 [(ngModel)]="UserData.cpf"
+                 [pattern]="cpfPattern"
+                 [textMask]="{mask: maskCpfPattern, keepCharPositions: false, placeholderChar: '\u2000'}"
+                 #cpf="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">
+            <div *ngIf="cpf.errors.required">
+              O campo CPF é obrigatório.
+            </div>
+
+            <div *ngIf="phone.errors.pattern">
+              O campo CPF é inválido.
+            </div>
+          </div>
+        </div>
+
+        <!--Email-->
+        <div class="col-md-4 mb-2">
+          <input class="form-control"
+                 placeholder="Email*"
+                 [ngClass]="{
+                    'is-invalid': email.invalid && (email.dirty || email.touched),
+                    'is-valid': email.valid && (email.dirty || email.touched)
+                   }"
+                 type="text"
+                 name="Email"
+                 [(ngModel)]="UserData.email"
+                 #email="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required">
+              O campo email é obrigatório.
+            </div>
+          </div>
+        </div>
+
+        <!--Phone Number-->
+        <div class="col-md-4 mb-2">
+          <input class="form-control"
+                 placeholder="Telefone*"
+                 [ngClass]="{
+                    'is-invalid': phone.invalid && (phone.dirty || phone.touched),
+                    'is-valid': phone.valid && (phone.dirty || phone.touched)
+                   }"
+                 type="text"
+                 name="Phone"
+                 [(ngModel)]="UserData.phonenumber"
+                 #phone="ngModel"
+                 [pattern]="phonePattern"
+                 [textMask]="{mask: maskPhonePattern, keepCharPositions: false, placeholderChar: '\u2000'}"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+            <div *ngIf="phone.errors.required">
+              O campo telefone é obrigatório.
+            </div>
+
+            <div *ngIf="phone.errors.pattern">
+              O campo telefone é inválido.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Terceira Linha-->
+      <div class="row mb-4">
+        <!--Company Name-->
+        <div class="col-md-6 mb-2">
+          <input class="form-control"
+                 placeholder="Nome da Empresa*"
+                 [ngClass]="{
+                    'is-invalid': companyname.invalid && (companyname.dirty || companyname.touched),
+                    'is-valid': companyname.valid && (companyname.dirty || companyname.touched)
+                   }"
+                 type="text"
+                 name="CompanyName"
+                 [(ngModel)]="UserData.companyname"
+                 #companyname="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="companyname.invalid && (companyname.dirty || companyname.touched)">
+            <div *ngIf="companyname.errors.required">
+              O campo nome da empresa é obrigatório.
+            </div>
+          </div>
+        </div>
+
+        <!--CNPJ-->
+        <div class="col-md-6 mb-2">
+          <input class="form-control"
+                 placeholder="CNPJ*"
+                 [ngClass]="{
+                    'is-invalid': cnpj.invalid && (cnpj.dirty || cnpj.touched),
+                    'is-valid': cnpj.valid && (cnpj.dirty || cnpj.touched)
+                   }"
+                 type="text"
+                 name="CNPJ"
+                 [(ngModel)]="UserData.cnpj"
+                 #cnpj="ngModel"
+                 [pattern]="cnpjPattern"
+                 [textMask]="{mask: maskCnpjPattern, keepCharPositions: false, placeholderChar: '\u2000'}"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="cnpj.invalid && (cnpj.dirty || cnpj.touched)">
+            <div *ngIf="cnpj.errors.required">
+              O campo CNPJ é obrigatório.
+            </div>
+
+            <div *ngIf="phone.errors.pattern">
+              O campo CNPJ é inválido.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h6><b>Endereço</b></h6>
+      <div class="progress mb-2">
+        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
+      <!--Quarta Linha-->
+      <div class="row">
+        <!--CEP-->
+        <div class="col-md-4 mb-2">
+          <input class="form-control"
+                 placeholder="CEP*"
+                 [ngClass]="{
+                    'is-invalid': cep.invalid && (cep.dirty || cep.touched),
+                    'is-valid': cep.valid && (cep.dirty || cep.touched)
+                   }"
+                 type="text"
+                 name="CEP"
+                 [(ngModel)]="UserData.cep"
+                 [pattern]="cepPattern"
+                 [textMask]="{mask: maskCepPattern, keepCharPositions: false, placeholderChar: '\u2000'}"
+                 #cep="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="cep.invalid && (cep.dirty || cep.touched)">
+            <div *ngIf="cep.errors.required">
+              O campo CEP é obrigatório.
+            </div>
+
+            <div *ngIf="cep.errors.pattern">
+              O campo CEP é inválido.
+            </div>
+          </div>
+        </div>
+
+        <!--Address-->
+        <div class="col-md-6 mb-2">
+          <input class="form-control"
+                 placeholder="Endereço*"
+                 [ngClass]="{
+                    'is-invalid': address.invalid && (address.dirty || address.touched),
+                    'is-valid': address.valid && (address.dirty || address.touched)
+                   }"
+                 type="text"
+                 name="Address"
+                 [(ngModel)]="UserData.address"
+                 #address="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="address.invalid && (address.dirty || address.touched)">
+            <div *ngIf="address.errors.required">
+              O campo endereço é obrigatório.
+            </div>
+          </div>
+        </div>
+
+        <!--Number-->
+        <div class="col-md-2 mb-2">
+          <input class="form-control"
+                 placeholder="Número*"
+                 [ngClass]="{
+                    'is-invalid': number.invalid && (number.dirty || number.touched),
+                    'is-valid': number.valid && (number.dirty || number.touched)
+                   }"
+                 type="text"
+                 name="Number"
+                 [(ngModel)]="UserData.addressnumber"
+                 #number="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="number.invalid && (number.dirty || number.touched)">
+            <div *ngIf="number.errors.required">
+              O campo número é obrigatório.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Quinta Linha-->
+      <div class="row mb-4">
+        <!--Complement-->
+        <div class="col-md-4 mb-2">
+          <input class="form-control"
+                 placeholder="Complemento"
+                 type="text"
+                 name="AddressComplement"
+                 [(ngModel)]="UserData.addresscomplement"
+                 #addresscomplement="ngModel" />
+        </div>
+
+        <!--State-->
+        <div class="col-md-4 mb-2">
+          <select class="form-control"
+                  [ngClass]="{
+                      'is-invalid': state.invalid && (state.dirty || state.touched),
+                      'is-valid': state.valid && (state.dirty || state.touched)
+                     }"
+                  name="AdressState"
+                  [(ngModel)]="UserData.addressstate"
+                  #state="ngModel"
+                  required>
+            <option value="" [selected]="true" [disabled]="true">Estado*</option>
+            <option *ngFor="let s of stateList" [ngValue]="s">{{ s.name }}</option>
+          </select>
+
+          <div class="invalid-feedback mb-2" *ngIf="state.invalid && (state.dirty || state.touched)">
+            <div *ngIf="state.errors.required">
+              O campo estado é obrigatório.
+            </div>
+          </div>
+        </div>
+
+        <!--City-->
+        <div class="col-md-4 mb-2">
+          <input class="form-control"
+                 placeholder="Cidade*"
+                 [ngClass]="{
+                    'is-invalid': city.invalid && (city.dirty || city.touched),
+                    'is-valid': city.valid && (city.dirty || city.touched)
+                   }"
+                 type="text"
+                 name="AddressCity"
+                 [(ngModel)]="UserData.addresscity"
+                 #city="ngModel"
+                 required />
+
+          <div class="invalid-feedback mb-2" *ngIf="city.invalid && (city.dirty || city.touched)">
+            <div *ngIf="city.errors.required">
+              O campo endereço é obrigatório.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h6><b>Agora escolha sua senha</b></h6>
+      <div class="progress mb-2">
+        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
+      <!--Linha da Senha-->
+      <div class="row">
+        <!--Dicas-->
+        <div class="col-md-6 mb-2">
+          <div class="card">
+            <div class="card-body">
+              <p><b>Dicas de Senha</b></p>
+              <p><fa-icon class="text-secondary" [icon]="checkIcon"></fa-icon> Pelo menos 8 caracteres;</p>
+              <p><fa-icon class="text-secondary" [icon]="checkIcon"></fa-icon> Pelo menos 1 caractere minúsculo;</p>
+              <p><fa-icon class="text-secondary" [icon]="checkIcon"></fa-icon> Pelo menos 1 caractere maiúsculo;</p>
+            </div>
+          </div>
+        </div>
+
+        <!--Campos de Senha-->
+        <div class="col-md-6 mb-2">
+          <!--Password-->
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <input class="form-control"
+                     placeholder="Senha*"
+                     [ngClass]="{
+                      'is-invalid': password.invalid && (password.dirty || password.touched),
+                      'is-valid': password.valid && (password.dirty || password.touched)
+                     }"
+                     type="password"
+                     name="Password"
+                     [(ngModel)]="UserData.password"
+                     #password="ngModel"
+                     [pattern]="passwordPattern"
+                     required />
+
+              <div class="invalid-feedback mb-2" *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.errors.required">
+                  O campo nome é obrigatório.
+                </div>
+
+                <div *ngIf="password.errors.pattern">
+                  O campo senha não atende as requisítos mínimos.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Confirm Password-->
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <input class="form-control"
+                     placeholder="Confirmar Senha*"
+                     [ngClass]="{
+                      'is-invalid': !passwordIsEqual() || (passwordconfirm.invalid && (passwordconfirm.dirty || passwordconfirm.touched)),
+                      'is-valid': passwordIsEqual() && (passwordconfirm.valid && (passwordconfirm.dirty || passwordconfirm.touched))
+                      }"
+                     type="password"
+                     name="PasswordConfirm"
+                     [(ngModel)]="UserData.passwordconfirm"
+                     #passwordconfirm="ngModel"
+                     [pattern]="passwordPattern"
+                     required />
+
+              <div class="invalid-feedback mb-2" *ngIf="passwordconfirm.invalid && (passwordconfirm.dirty || passwordconfirm.touched)">
+                <div *ngIf="passwordconfirm.errors.required">
+                  O campo confirmar senha é obrigatório.
+                </div>
+
+                <div *ngIf="passwordconfirm.errors.pattern">
+                  O campo senha não atende as requisítos mínimos.
+                </div>
+              </div>
+              <div class="invalid-feedback mb-2" *ngIf="!passwordIsEqual()">
+                <div *ngIf="!passwordIsEqual()">
+                  Os campos de senha estão diferentes.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Send Button-->
+          <div class="row">
+            <div class="col-md-12 mb-2 text-right">
+              <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>      
+    </form>
+  </div>
+</div>

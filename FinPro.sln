@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinPro.Web", "FinPro.Web\FinPro.Web.csproj", "{1F8F23C5-2044-49FB-A26B-6E30F5C32DDB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanciamentoProjetos.Domain", "FinanciamentoProjetos.Domain\FinanciamentoProjetos.Domain.csproj", "{DC6F3BC3-76EA-4FBA-A744-6269A9310A2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanciamentoProjetos.Domain.Services", "FinanciamentoProjetos.Domain.Services\FinanciamentoProjetos.Domain.Services.csproj", "{B5A5DC07-EAC3-4DEE-9C42-CF0756A57607}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanciamentoProjetos.Test", "FinanciamentoProjetos.Test\FinanciamentoProjetos.Test.csproj", "{84AF9860-D8B7-42BB-B955-5C36BF7A0ACF}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "FinPro.AngularClient", "FinPro.AngularClient\", "{C4421512-D654-42E4-AF47-EDF72829FB49}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52671"
+		Debug.AspNetCompiler.PhysicalPath = "FinPro.AngularClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52671\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52671"
+		Release.AspNetCompiler.PhysicalPath = "FinPro.AngularClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52671\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52671"
+		SlnRelativePath = "FinPro.AngularClient\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanciamentoProjetos.Infra", "FinanciamentoProjetos.Infra\FinanciamentoProjetos.Infra.csproj", "{C20B2021-AEA0-4273-9209-C3734896F3CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F8F23C5-2044-49FB-A26B-6E30F5C32DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8F23C5-2044-49FB-A26B-6E30F5C32DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8F23C5-2044-49FB-A26B-6E30F5C32DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8F23C5-2044-49FB-A26B-6E30F5C32DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC6F3BC3-76EA-4FBA-A744-6269A9310A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC6F3BC3-76EA-4FBA-A744-6269A9310A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC6F3BC3-76EA-4FBA-A744-6269A9310A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC6F3BC3-76EA-4FBA-A744-6269A9310A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5A5DC07-EAC3-4DEE-9C42-CF0756A57607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5A5DC07-EAC3-4DEE-9C42-CF0756A57607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5A5DC07-EAC3-4DEE-9C42-CF0756A57607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5A5DC07-EAC3-4DEE-9C42-CF0756A57607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84AF9860-D8B7-42BB-B955-5C36BF7A0ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84AF9860-D8B7-42BB-B955-5C36BF7A0ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84AF9860-D8B7-42BB-B955-5C36BF7A0ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84AF9860-D8B7-42BB-B955-5C36BF7A0ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4421512-D654-42E4-AF47-EDF72829FB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4421512-D654-42E4-AF47-EDF72829FB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4421512-D654-42E4-AF47-EDF72829FB49}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4421512-D654-42E4-AF47-EDF72829FB49}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{C20B2021-AEA0-4273-9209-C3734896F3CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C20B2021-AEA0-4273-9209-C3734896F3CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C20B2021-AEA0-4273-9209-C3734896F3CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C20B2021-AEA0-4273-9209-C3734896F3CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABD9D524-984E-4A25-8A2E-771F6BAEBB28}
+	EndGlobalSection
+EndGlobal
